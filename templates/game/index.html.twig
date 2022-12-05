@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+	<h1 class="pt-5 pb-3">Welcome to My ScoreBoard</h1>
+    <h3 class="pb-3">On this page you will find the list of games, players and contests</h3>
+    <hr>
+	<table class="table mb-5">
+        <caption class="text-info">List of games</caption>
+		<thead>
+			<th>Id</th>
+			<th>Title</th>
+			<th>Min. Players</th>
+			<th>Max. Players</th>
+		</thead>
+		<tbody>
+			{% for game in games %}
+				<tr>
+					<td>{{ game.id }}</td>
+					<td>{{ game.title }}</td>
+					<td>{{ game.minPlayers }}</td>
+					<td>{{ game.maxPlayers }}</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+    <hr>
+
+    <table class="table mb-5">
+        <caption class="text-info">List of players</caption>
+		<thead>
+			<th>Id</th>
+			<th>E-mail</th>
+			<th>Nickname</th>
+		</thead>
+		<tbody>
+			{% for player in players %}
+				<tr>
+					<td>{{ player.id }}</td>
+					<td>{{ player.email }}</td>
+					<td>{{ player.nickname }}</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+    <hr>
+
+    <table class="table mb-5">
+        <caption class="text-info">List of contests</caption>
+		<thead>
+			<th>Game</th>
+            <th>Start date</th>
+			<th>Number of registred players</th>
+            <th>Winner nickname</th>
+		</thead>
+		<tbody>
+			{% for contest in contests %}
+				<tr>
+					<td>{{ contest.game.title }}</td>
+                    <td>{{ contest.startdate|date }}</td>
+                    {# <td>{{ contest.players|length }}</td> #}
+                    {# <td>{{ contest.nickname }}</td> #}
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+    <hr>
+{% endblock %}
